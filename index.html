@@ -373,7 +373,7 @@ h1,h2,h3{margin:8px 0 12px}.lead{font-size:18px;line-height:1.85}
     <div class="card center">
       <span class="badge">القسم الرابع</span>
       <h2>الجمع والطرح ذهنيًا</h2>
-      <div class="mini">الجولة الواحدة تجمع الصحيح والعشري، لكن كل مسألة تكون من النوع نفسه في الطرفين.</div>
+      <div class="mini">مستوى خامس ابتدائي: أعداد مختارة بعناية بحيث يصبح الحساب بعد التعويض بسيطًا وواضحًا.</div>
     </div>
 
     <div class="card">
@@ -422,8 +422,8 @@ h1,h2,h3{margin:8px 0 12px}.lead{font-size:18px;line-height:1.85}
           <h3>➕ في الجمع</h3>
           <p>نضيف مقدارًا إلى أحد العددين ونطرح <b>المقدار نفسه</b> من العدد الآخر، حتى يبقى المجموع ثابتًا.</p>
           <div class="ruleFormula">(أ + س) + (ب − س) = أ + ب</div>
-          <div class="ruleExample">٤٨ + ٢٧ ← ٥٠ + ٢٥ = ٧٥</div>
-          <div class="ruleExample">٣٤٧ + ١٥٨ ← ٣٠٠ + ٢٠٥ = ٥٠٥</div>
+          <div class="ruleExample">٤٨ + ٣٢ ← ٥٠ + ٣٠ = ٨٠</div>
+          <div class="ruleExample">٣٩٨ + ٢٠٢ ← ٤٠٠ + ٢٠٠ = ٦٠٠</div>
         </div>
 
         <div class="ruleCard">
@@ -446,9 +446,9 @@ h1,h2,h3{margin:8px 0 12px}.lead{font-size:18px;line-height:1.85}
 
         <div class="ruleCard">
           <h3>الأعداد العشرية</h3>
-          <div class="ruleExample">٦,٨ + ٢,٧ ← نجعل أحدهما عددًا صحيحًا مثل ٧,٠</div>
+          <div class="ruleExample">٦,٨ + ٣,٢ ← ٧,٠ + ٣,٠ = ١٠,٠</div>
           <p><b>إذا كان حتى جزء من عشرة:</b> يجب أن يصبح جزء العشرة صفرًا.</p>
-          <div class="ruleExample">٤,٧٦ − ١,٩٣ ← نجعل أحدهما مثل ٥,٠٠ أو ٢,٠٠</div>
+          <div class="ruleExample">٤,٩٦ + ٢,٠٤ ← ٥,٠٠ + ٢,٠٠ = ٧,٠٠</div>
           <p><b>إذا كان حتى جزء من مئة:</b> يجب أن يصبح <b>جزء العشرة وجزء المئة صفرين معًا</b>، وليس فقط جزء المئة.</p>
         </div>
       </div>
@@ -1355,29 +1355,70 @@ function chooseSubPath(a,b,step,method){
   return best[ri(0,best.length-1)];
 }
 
+function pickFrom(a){return a[ri(0,a.length-1)]}
+
+function makeEasyAddOperands(spec,info){
+  let targetA,targetB,delta,up;
+
+  if(spec==='int2'){
+    targetA=pickFrom([30,40,50,60,70,80]);
+    targetB=pickFrom([20,30,40,50,60]);
+    while(targetA+targetB>130)targetB=pickFrom([20,30,40]);
+    delta=ri(1,4);up=Math.random()<.5;
+  }else if(spec==='int3'){
+    targetA=pickFrom([200,300,400,500,600]);
+    targetB=pickFrom([100,200,300]);
+    while(targetA+targetB>800)targetB=pickFrom([100,200]);
+    delta=ri(1,9);up=Math.random()<.5;
+  }else if(spec==='dec1'){
+    targetA=pickFrom([30,40,50,60,70,80,90,100,120]);
+    targetB=pickFrom([20,30,40,50,60,70]);
+    while(targetA+targetB>160)targetB=pickFrom([20,30,40]);
+    delta=ri(1,4);up=Math.random()<.5;
+  }else{
+    targetA=pickFrom([300,400,500,600,700,800,900,1000,1200]);
+    targetB=pickFrom([200,300,400,500,600,700]);
+    while(targetA+targetB>1600)targetB=pickFrom([200,300,400]);
+    delta=ri(1,9);up=Math.random()<.5;
+  }
+
+  const a=up?targetA-delta:targetA+delta;
+  const b=up?targetB+delta:targetB-delta;
+  return {a,b};
+}
+
+function makeEasySubOperands(spec,info){
+  if(spec==='int2'){
+    const aT=ri(5,9),bT=ri(1,aT-2);
+    return {a:aT*10+ri(1,4),b:bT*10+ri(6,9)};
+  }
+  if(spec==='int3'){
+    const aH=ri(4,9),bH=ri(1,aH-2);
+    return {a:aH*100+ri(1,9),b:bH*100+ri(91,99)};
+  }
+  if(spec==='dec1'){
+    const aI=ri(5,14),bI=ri(1,aI-2);
+    return {a:aI*10+ri(1,4),b:bI*10+ri(6,9)};
+  }
+  const aI=ri(5,14),bI=ri(1,aI-2);
+  return {a:aI*100+ri(1,9),b:bI*100+ri(91,99)};
+}
+
 function makeMentalQuestion(spec){
   const info=mentalSpecInfo(spec);
   const op=mentalOpMode==='mixed'?(Math.random()<.5?'add':'sub'):mentalOpMode;
-  let a=pickNumber(spec,info),b=pickNumber(spec,info);
-
-  if(op==='sub'){
-    if(a===b)b=pickNumber(spec,info);
-    if(b>a)[a,b]=[b,a];
-    // نبقي الفرق موجبًا وواضحًا
-    let tries=0;
-    while(a-b<Math.max(1,Math.floor(info.roundStep/5)) && tries++<30){
-      a=pickNumber(spec,info);b=pickNumber(spec,info);if(b>a)[a,b]=[b,a];
-    }
-  }
-
+  const pair=op==='add'?makeEasyAddOperands(spec,info):makeEasySubOperands(spec,info);
+  const a=pair.a,b=pair.b;
   const ans=op==='add'?a+b:a-b;
   const paths={};
+
   if(op==='add'){
     paths.opposite=chooseAddOppositePath(a,b,info.roundStep);
   }else{
     paths.bothAdd=chooseSubPath(a,b,info.roundStep,'bothAdd');
     paths.bothSub=chooseSubPath(a,b,info.roundStep,'bothSub');
   }
+
   return {spec,...info,op,a,b,ans,paths,completedMethods:[]};
 }
 
@@ -1444,7 +1485,7 @@ function renderMentalQuestion(){
   q.completedMethods=q.completedMethods||[];
   document.getElementById('mentalBadge').textContent='السؤال '+ar(mentalIndex+1)+' من '+ar(mentalQs.length)+' • '+q.label;
   document.getElementById('mentalProblem').textContent=mentalFmt(q.a,q.scale)+' '+mentalOpSymbol(q.op)+' '+mentalFmt(q.b,q.scale)+' = ؟';
-  document.getElementById('mentalRoundRule').innerHTML='<b>شرط الحل:</b> '+q.rule;
+  document.getElementById('mentalRoundRule').innerHTML='<b>مستوى خامس ابتدائي:</b> '+q.rule+' وبعد التعويض ستصبح العملية أبسط بوضوح.';
   document.getElementById('mentalNext').classList.add('hidden');
   clearMentalStepsForMethod();
   document.getElementById('mentalStatus').textContent=q.op==='sub'
