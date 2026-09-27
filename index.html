@@ -373,30 +373,39 @@ h1,h2,h3{margin:8px 0 12px}.lead{font-size:18px;line-height:1.85}
     <div class="card center">
       <span class="badge">القسم الرابع</span>
       <h2>الجمع والطرح ذهنيًا</h2>
-      <div class="mini">للأعداد الصحيحة والعشرية باستخدام التعويض الذكي بدل الحساب الطويل.</div>
+      <div class="mini">الجولة الواحدة تجمع الصحيح والعشري، لكن كل مسألة تكون من النوع نفسه في الطرفين.</div>
     </div>
 
-    <div class="mentalSetup">
-      <div class="card">
-        <h3>نوع الأعداد</h3>
-        <div class="actions">
-          <button id="mentalIntBtn" class="btn secondary" onclick="setMentalNumberMode('int')">أعداد صحيحة</button>
-          <button id="mentalDecBtn" class="btn secondary" onclick="setMentalNumberMode('decimal')">أعداد عشرية</button>
-          <button id="mentalMixedNumBtn" class="btn secondary" onclick="setMentalNumberMode('mixed')">مختلط</button>
+    <div class="card">
+      <h3>أنواع الأسئلة في كل جولة</h3>
+      <div class="mentalRules">
+        <div class="ruleCard">
+          <b>🔢 أعداد صحيحة</b>
+          <p>من رقمين أو ثلاثة أرقام في الطرفين.</p>
+          <div class="tip">رقمان: نجعل الآحاد صفرًا.<br>ثلاثة أرقام: نجعل العشرات والآحاد صفرين.</div>
+        </div>
+        <div class="ruleCard">
+          <b>🔹 أعداد عشرية</b>
+          <p>أعشار أو أجزاء من مئة في الطرفين.</p>
+          <div class="tip">أعشار: نجعل جزء العشرة صفرًا.<br>أجزاء من مئة: نجعل جزء العشرة وجزء المئة صفرين معًا.</div>
         </div>
       </div>
-      <div class="card">
-        <h3>نوع العملية</h3>
-        <div class="actions">
-          <button id="mentalAddBtn" class="btn secondary" onclick="setMentalOpMode('add')">➕ جمع</button>
-          <button id="mentalSubBtn" class="btn secondary" onclick="setMentalOpMode('sub')">➖ طرح</button>
-          <button id="mentalMixedOpBtn" class="btn secondary" onclick="setMentalOpMode('mixed')">🔀 مختلط</button>
-        </div>
+
+      <h3 style="margin-top:18px">نوع العملية</h3>
+      <div class="actions">
+        <button id="mentalAddBtn" class="btn secondary" onclick="setMentalOpMode('add')">➕ جمع</button>
+        <button id="mentalSubBtn" class="btn secondary" onclick="setMentalOpMode('sub')">➖ طرح</button>
+        <button id="mentalMixedOpBtn" class="btn secondary" onclick="setMentalOpMode('mixed')">🔀 جمع وطرح</button>
+      </div>
+
+      <div class="tip" style="margin-top:14px">
+        <b>في مسائل الطرح:</b> يجب حل المسألة بطريقتين قبل الانتقال:
+        <b>إضافة نفس المقدار للعددين</b> ثم <b>طرح نفس المقدار من العددين</b>، أو بالعكس.
       </div>
     </div>
 
     <div class="grid g2">
-      <div class="tile" onclick="show('mentalLesson')"><div class="ico">📘</div><h3>الشرح المفصل</h3><div class="mini">افهمي لماذا نحافظ على الناتج وكيف نختار التعويض.</div></div>
+      <div class="tile" onclick="show('mentalLesson')"><div class="ico">📘</div><h3>الشرح المفصل</h3><div class="mini">قواعد التعويض والتصفير حسب نوع العدد.</div></div>
       <div class="tile" onclick="startMentalQuiz()"><div class="ico">⚡</div><h3>ابدئي اللعبة</h3><div class="mini">اختاري الطريقة، ثم مقدار التعويض، ثم الناتج.</div></div>
     </div>
   </section>
@@ -405,47 +414,48 @@ h1,h2,h3{margin:8px 0 12px}.lead{font-size:18px;line-height:1.85}
     <div class="card">
       <div class="center">
         <span class="badge">شرح الحساب الذهني</span>
-        <h2>التعويض: نجعل أحد العددين أسهل من غير أن نغيّر الناتج</h2>
+        <h2>التعويض الذكي = نصنع عددًا مستديرًا ثم نحسب بسهولة</h2>
       </div>
 
       <div class="mentalRules">
         <div class="ruleCard">
-          <h3>➕ أولًا: في الجمع</h3>
-          <p>إذا أضفنا مقدارًا إلى أحد العددين، نطرح <b>المقدار نفسه</b> من العدد الآخر. بهذه الطريقة يبقى المجموع كما هو.</p>
+          <h3>➕ في الجمع</h3>
+          <p>نضيف مقدارًا إلى أحد العددين ونطرح <b>المقدار نفسه</b> من العدد الآخر، حتى يبقى المجموع ثابتًا.</p>
           <div class="ruleFormula">(أ + س) + (ب − س) = أ + ب</div>
           <div class="ruleExample">٤٨ + ٢٧ ← ٥٠ + ٢٥ = ٧٥</div>
-          <div class="ruleExample">٦,٨ + ٢,٧ ← ٧ + ٢,٥ = ٩,٥</div>
-          <div class="tip"><b>الفكرة:</b> نجعل ٤٨ تصبح ٥٠ أو ٢,٧ تصبح ٣؛ والزيادة التي أعطيناها لعدد نأخذها من العدد الآخر.</div>
+          <div class="ruleExample">٣٤٧ + ١٥٨ ← ٣٠٠ + ٢٠٥ = ٥٠٥</div>
         </div>
 
         <div class="ruleCard">
-          <h3>➖ ثانيًا: في الطرح</h3>
-          <p>إذا أضفنا المقدار نفسه إلى العددين، أو طرحنا المقدار نفسه من العددين، فإن <b>الفرق لا يتغير</b>.</p>
+          <h3>➖ في الطرح</h3>
+          <p>الفرق لا يتغير إذا أضفنا المقدار نفسه إلى العددين، كما لا يتغير إذا طرحنا المقدار نفسه من العددين.</p>
           <div class="ruleFormula">(أ + س) − (ب + س) = أ − ب</div>
           <div class="ruleFormula">(أ − س) − (ب − س) = أ − ب</div>
-          <div class="ruleExample">٦٣ − ٢٨ ← ٦٥ − ٣٠ = ٣٥</div>
-          <div class="ruleExample">٨,٤ − ٢,٩ ← ٨,٥ − ٣ = ٥,٥</div>
+          <div class="tip"><b>في اللعبة:</b> ستجربين الطريقتين على نفس المسألة قبل الانتقال.</div>
         </div>
       </div>
 
       <div class="mentalRules">
         <div class="ruleCard">
-          <h3>كيف أختار مقدار التعويض؟</h3>
-          <p>ابحثي عن العدد الأقرب إلى <b>عشرة أو مئة أو عدد صحيح</b>. الفرق بين العدد الحالي والعدد السهل هو مقدار التعويض.</p>
-          <div class="ruleExample">٣٩ يحتاج +١ ليصبح ٤٠</div>
-          <div class="ruleExample">٧,٨ يحتاج +٠,٢ ليصبح ٨</div>
-          <div class="ruleExample">٤,٩٦ يحتاج +٠,٠٤ ليصبح ٥</div>
+          <h3>الأعداد الصحيحة</h3>
+          <div class="ruleExample">٤٧ + ٣٨ ← نُصفّر الآحاد في أحد العددين</div>
+          <p><b>إذا كان العدد من رقمين:</b> الحل المقبول يجب أن يحوّل أحد العددين إلى مضاعف للعشرة، مثل ٤٠ أو ٥٠ أو ٧٠.</p>
+          <div class="ruleExample">٣٤٧ − ١٨٢ ← نُصفّر العشرات والآحاد معًا</div>
+          <p><b>إذا كان العدد من ثلاثة أرقام:</b> الحل المقبول يجب أن يحوّل أحد العددين إلى مضاعف للمئة، مثل ٣٠٠ أو ٤٠٠ أو ٥٠٠.</p>
         </div>
+
         <div class="ruleCard">
-          <h3>انتبهي إلى الخطأ الشائع</h3>
-          <p>في <b>الجمع</b> لا نضيف العدد نفسه إلى الجهتين؛ لأن المجموع سيتغير. وفي <b>الطرح</b> لا نضيف في جهة ونطرح من الأخرى؛ لأن الفرق سيتغير.</p>
-          <div class="tip"><b>قاعدة سريعة:</b><br>الجمع = اتجاهان متعاكسان ↔️<br>الطرح = الاتجاه نفسه في العددين ➕➕ أو ➖➖</div>
+          <h3>الأعداد العشرية</h3>
+          <div class="ruleExample">٦,٨ + ٢,٧ ← نجعل أحدهما عددًا صحيحًا مثل ٧,٠</div>
+          <p><b>إذا كان حتى جزء من عشرة:</b> يجب أن يصبح جزء العشرة صفرًا.</p>
+          <div class="ruleExample">٤,٧٦ − ١,٩٣ ← نجعل أحدهما مثل ٥,٠٠ أو ٢,٠٠</div>
+          <p><b>إذا كان حتى جزء من مئة:</b> يجب أن يصبح <b>جزء العشرة وجزء المئة صفرين معًا</b>، وليس فقط جزء المئة.</p>
         </div>
       </div>
 
       <div class="actions">
-        <button class="btn soft" onclick="openMental()">رجوع للإعدادات</button>
-        <button class="btn" onclick="startMentalQuiz()">فهمت — ابدئي اللعبة ⚡</button>
+        <button class="btn soft" onclick="openMental()">رجوع</button>
+        <button class="btn" onclick="startMentalQuiz()">ابدئي اللعبة ⚡</button>
       </div>
     </div>
   </section>
@@ -455,24 +465,24 @@ h1,h2,h3{margin:8px 0 12px}.lead{font-size:18px;line-height:1.85}
       <div class="center">
         <span id="mentalBadge" class="badge"></span>
         <div id="mentalProblem" class="mentalProblem"></div>
-        <div class="mini">حوّلي العملية إلى عملية أسهل ذهنيًا مع الحفاظ على الناتج نفسه.</div>
+        <div id="mentalRoundRule" class="mentalHint"></div>
       </div>
 
       <div id="mentalStep1" class="mentalStep">
-        <h3>الخطوة ١: ما نوع التعويض الصحيح؟</h3>
+        <h3>الخطوة ١: اختاري طريقة التعويض</h3>
         <div id="mentalMethods" class="mentalMethods"></div>
         <div id="mentalMethodFb" class="feedback"></div>
       </div>
 
       <div id="mentalStep2" class="mentalStep locked">
-        <h3>الخطوة ٢: ما مقدار التعويض المطلوب؟</h3>
+        <h3>الخطوة ٢: اختاري مقدار التعويض</h3>
         <div id="mentalAmountHint" class="mentalHint"></div>
         <div id="mentalAmounts" class="mentalChoices"></div>
         <div id="mentalAmountFb" class="feedback"></div>
       </div>
 
       <div id="mentalStep3" class="mentalStep locked">
-        <h3>الخطوة ٣: احسبي العملية الأسهل</h3>
+        <h3>الخطوة ٣: احسبي العملية بعد التصفير</h3>
         <div id="mentalTransform" class="mentalTransform"></div>
         <div id="mentalResults" class="mentalChoices"></div>
         <div id="mentalAnswerFb" class="feedback"></div>
@@ -1267,143 +1277,179 @@ function nextDecimalQuestion(){
 
 
 /* ---------- mental addition/subtraction ---------- */
-let mentalNumberMode=localStorage.getItem('mental-number-mode')||'mixed';
 let mentalOpMode=localStorage.getItem('mental-op-mode')||'mixed';
 let mentalQs=[],mentalIndex=0,mentalCurrent=null,mentalCorrect=0,mentalMistakes=0,mentalPerfect=true;
+let mentalActiveMethod=null,mentalActivePath=null;
 
 const MENTAL_METHODS=[
-  {key:'bothAdd',label:'➕ أضيف العدد نفسه إلى الجهتين'},
-  {key:'bothSub',label:'➖ أطرح العدد نفسه من الجهتين'},
+  {key:'bothAdd',label:'➕ أضيف العدد نفسه إلى العددين'},
+  {key:'bothSub',label:'➖ أطرح العدد نفسه من العددين'},
   {key:'opposite',label:'↔️ أجمع في جهة وأطرح في الأخرى'}
 ];
 
 function paintMentalControls(){
   const map=[
-    ['mentalIntBtn',mentalNumberMode==='int'],
-    ['mentalDecBtn',mentalNumberMode==='decimal'],
-    ['mentalMixedNumBtn',mentalNumberMode==='mixed'],
     ['mentalAddBtn',mentalOpMode==='add'],
     ['mentalSubBtn',mentalOpMode==='sub'],
     ['mentalMixedOpBtn',mentalOpMode==='mixed']
   ];
   map.forEach(([id,on])=>{const el=document.getElementById(id);if(el)el.classList.toggle('active',on)})
 }
-function setMentalNumberMode(v){mentalNumberMode=v;localStorage.setItem('mental-number-mode',v);paintMentalControls()}
 function setMentalOpMode(v){mentalOpMode=v;localStorage.setItem('mental-op-mode',v);paintMentalControls()}
 
-function mentalAscii(n,scale){
-  const digits=scale===100?2:scale===10?1:0;
-  let s=(n/scale).toFixed(digits);
-  if(digits)s=s.replace(/0+$/,'').replace(/\.$/,'');
-  return s;
+function mentalDigits(scale){return scale===100?2:scale===10?1:0}
+function mentalFmt(n,scale){
+  if(scale===1)return ar(String(n));
+  return ar((n/scale).toFixed(mentalDigits(scale)));
 }
-function mentalFmt(n,scale){return ar(mentalAscii(n,scale))}
 function mentalOpSymbol(op){return op==='add'?'+':'−'}
 
-function makeMentalQuestion(){
-  const kind=mentalNumberMode==='mixed'?(Math.random()<.5?'int':'decimal'):mentalNumberMode;
-  const op=mentalOpMode==='mixed'?(Math.random()<.5?'add':'sub'):mentalOpMode;
-  let scale=1;
-  if(kind==='decimal')scale=Math.random()<.55?10:100;
+function mentalSpecInfo(spec){
+  if(spec==='int2')return {kind:'int',scale:1,roundStep:10,label:'صحيح من رقمين',rule:'يجب أن يصبح الآحاد صفرًا.',min:11,max:99};
+  if(spec==='int3')return {kind:'int',scale:1,roundStep:100,label:'صحيح من ثلاثة أرقام',rule:'يجب أن تصبح العشرات والآحاد صفرين معًا.',min:101,max:999};
+  if(spec==='dec1')return {kind:'decimal',scale:10,roundStep:10,label:'عشري حتى جزء من عشرة',rule:'يجب أن يصبح جزء العشرة صفرًا.',min:11,max:299};
+  return {kind:'decimal',scale:100,roundStep:100,label:'عشري حتى جزء من مئة',rule:'يجب أن يصبح جزء العشرة وجزء المئة صفرين معًا.',min:101,max:2999};
+}
+function validNumberForSpec(n,spec,info){
+  if(n<info.min||n>info.max)return false;
+  if(n%info.roundStep===0)return false;
+  if(spec==='dec2' && n%10===0)return false; // يظهر جزء المئة فعليًا
+  return true;
+}
+function pickNumber(spec,info){
+  let n;
+  do{n=ri(info.min,info.max)}while(!validNumberForSpec(n,spec,info));
+  return n;
+}
+function roundedDown(n,step){return n-(n%step)}
+function roundedUp(n,step){return n+(step-(n%step))}
 
-  const target=ri(2,9)*scale;
-  const maxDelta=scale===1?4:(scale===10?4:9);
-  const delta=ri(1,maxDelta);
-  const below=Math.random()<.5;
-  const b=below?target-delta:target+delta;
+function chooseAddOppositePath(a,b,step){
+  const candidates=[];
+  const aDown=a%step,aUp=step-(a%step),bDown=b%step,bUp=step-(b%step);
 
-  let a;
-  if(op==='add'){
-    const minA=scale*2+delta;
-    const maxA=scale*18;
-    a=ri(minA,maxA);
+  if(aDown>0)candidates.push({delta:aDown,newA:a-aDown,newB:b+aDown,roundOriginal:a,roundTarget:a-aDown,roundSide:'الأول',direction:'أطرح من الأول وأضيف إلى الثاني'});
+  if(aUp>0 && b>aUp)candidates.push({delta:aUp,newA:a+aUp,newB:b-aUp,roundOriginal:a,roundTarget:a+aUp,roundSide:'الأول',direction:'أضيف إلى الأول وأطرح من الثاني'});
+  if(bDown>0)candidates.push({delta:bDown,newA:a+bDown,newB:b-bDown,roundOriginal:b,roundTarget:b-bDown,roundSide:'الثاني',direction:'أضيف إلى الأول وأطرح من الثاني'});
+  if(bUp>0 && a>bUp)candidates.push({delta:bUp,newA:a-bUp,newB:b+bUp,roundOriginal:b,roundTarget:b+bUp,roundSide:'الثاني',direction:'أطرح من الأول وأضيف إلى الثاني'});
+
+  candidates.sort((x,y)=>x.delta-y.delta);
+  const bestDelta=candidates[0].delta;
+  const best=candidates.filter(x=>x.delta===bestDelta);
+  return best[ri(0,best.length-1)];
+}
+function chooseSubPath(a,b,step,method){
+  const candidates=[];
+  if(method==='bothAdd'){
+    const aUp=step-(a%step),bUp=step-(b%step);
+    candidates.push({delta:aUp,newA:a+aUp,newB:b+aUp,roundOriginal:a,roundTarget:a+aUp,roundSide:'الأول'});
+    candidates.push({delta:bUp,newA:a+bUp,newB:b+bUp,roundOriginal:b,roundTarget:b+bUp,roundSide:'الثاني'});
   }else{
-    a=b+ri(scale*2,scale*10);
-    if(!below && a-delta<=0)a+=scale*3;
+    const aDown=a%step,bDown=b%step;
+    if(aDown>0 && b-aDown>=0)candidates.push({delta:aDown,newA:a-aDown,newB:b-aDown,roundOriginal:a,roundTarget:a-aDown,roundSide:'الأول'});
+    if(bDown>0 && b-bDown>=0)candidates.push({delta:bDown,newA:a-bDown,newB:b-bDown,roundOriginal:b,roundTarget:b-bDown,roundSide:'الثاني'});
   }
+  candidates.sort((x,y)=>x.delta-y.delta);
+  const bestDelta=candidates[0].delta;
+  const best=candidates.filter(x=>x.delta===bestDelta);
+  return best[ri(0,best.length-1)];
+}
 
-  let method,newA,newB,actionText;
-  if(op==='add'){
-    method='opposite';
-    if(below){
-      newA=a-delta;newB=b+delta;
-      actionText='نضيف '+mentalFmt(delta,scale)+' إلى العدد الثاني ونطرح '+mentalFmt(delta,scale)+' من العدد الأول.';
-    }else{
-      newA=a+delta;newB=b-delta;
-      actionText='نطرح '+mentalFmt(delta,scale)+' من العدد الثاني ونضيف '+mentalFmt(delta,scale)+' إلى العدد الأول.';
-    }
-  }else{
-    if(below){
-      method='bothAdd';newA=a+delta;newB=b+delta;
-      actionText='نضيف '+mentalFmt(delta,scale)+' إلى العددين معًا.';
-    }else{
-      method='bothSub';newA=a-delta;newB=b-delta;
-      actionText='نطرح '+mentalFmt(delta,scale)+' من العددين معًا.';
+function makeMentalQuestion(spec){
+  const info=mentalSpecInfo(spec);
+  const op=mentalOpMode==='mixed'?(Math.random()<.5?'add':'sub'):mentalOpMode;
+  let a=pickNumber(spec,info),b=pickNumber(spec,info);
+
+  if(op==='sub'){
+    if(a===b)b=pickNumber(spec,info);
+    if(b>a)[a,b]=[b,a];
+    // نبقي الفرق موجبًا وواضحًا
+    let tries=0;
+    while(a-b<Math.max(1,Math.floor(info.roundStep/5)) && tries++<30){
+      a=pickNumber(spec,info);b=pickNumber(spec,info);if(b>a)[a,b]=[b,a];
     }
   }
 
   const ans=op==='add'?a+b:a-b;
-  return {kind,op,scale,a,b,target,delta,below,method,newA,newB,ans,actionText};
+  const paths={};
+  if(op==='add'){
+    paths.opposite=chooseAddOppositePath(a,b,info.roundStep);
+  }else{
+    paths.bothAdd=chooseSubPath(a,b,info.roundStep,'bothAdd');
+    paths.bothSub=chooseSubPath(a,b,info.roundStep,'bothSub');
+  }
+  return {spec,...info,op,a,b,ans,paths,completedMethods:[]};
 }
 
-function makeMentalAmountChoices(q){
-  const vals=new Set([q.delta]);
-  const candidates=[q.delta+1,Math.max(1,q.delta-1),q.delta+2,Math.max(1,q.delta-2),q.delta*2,Math.max(1,Math.round(q.delta/2))];
-  candidates.forEach(v=>{if(v>0)vals.add(v)});
+function makeMentalAmountChoices(q,path){
+  const vals=new Set([path.delta]);
+  let offsets=[1,2,3,5,10,20,25,50];
+  if(q.scale===10)offsets=[1,2,3,4,5,6,7,8];
+  if(q.scale===100)offsets=[1,2,5,10,20,25,50,75];
+  for(const off of shuffle([...offsets])){
+    const v=path.delta+(Math.random()<.5?off:-off);
+    if(v>0 && v!==path.delta)vals.add(v);
+    if(vals.size>=4)break;
+  }
   let guard=1;
-  while(vals.size<4){vals.add(q.delta+guard++);}
+  while(vals.size<4){vals.add(path.delta+guard++);}
   return shuffle([...vals].slice(0,4));
 }
 function makeMentalResultChoices(q){
   const vals=new Set([q.ans]);
-  const step=q.scale===1?1:(q.scale===10?1:1);
-  const candidates=[q.ans+step,q.ans-step,q.ans+2*step,q.ans-2*step,q.ans+10*step,q.ans-10*step];
+  let step=q.scale===1?1:1;
+  const candidates=[q.ans+step,q.ans-step,q.ans+2*step,q.ans-2*step,q.ans+5*step,q.ans-5*step];
   candidates.forEach(v=>{if(v>=0)vals.add(v)});
-  let guard=1;
-  while(vals.size<4){vals.add(q.ans+guard++*step);}
+  let guard=1;while(vals.size<4)vals.add(q.ans+guard++*step);
   return shuffle([...vals].slice(0,4));
 }
 
+function buildMentalRound(){
+  const specs=['int2','int2','int3','int3','dec1','dec1','dec2','dec2'];
+  return shuffle(specs).map(spec=>makeMentalQuestion(spec));
+}
 function startMentalQuiz(){
-  mentalQs=Array.from({length:8},()=>makeMentalQuestion());
+  mentalQs=buildMentalRound();
   mentalIndex=0;mentalCorrect=0;mentalMistakes=0;mentalPerfect=true;resetRewardStreak();
   show('mentalQuiz');renderMentalQuestion();
+}
+
+function renderMentalMethods(){
+  const q=mentalCurrent,box=document.getElementById('mentalMethods');box.innerHTML='';
+  MENTAL_METHODS.forEach(m=>{
+    const b=document.createElement('button');b.className='mentalChoice';b.textContent=m.label;b.dataset.method=m.key;
+    const done=q.completedMethods.includes(m.key);
+    if(done){b.classList.add('correct');b.textContent='✅ تم: '+m.label;b.disabled=true}
+    b.onclick=()=>tryMentalMethod(b,m.key);box.appendChild(b);
+  });
+}
+function clearMentalStepsForMethod(){
+  mentalActiveMethod=null;mentalActivePath=null;
+  renderMentalMethods();
+  document.getElementById('mentalStep1').classList.remove('done','locked');
+  document.getElementById('mentalStep2').classList.add('locked');document.getElementById('mentalStep2').classList.remove('done');
+  document.getElementById('mentalStep3').classList.add('locked');document.getElementById('mentalStep3').classList.remove('done');
+  document.getElementById('mentalAmounts').innerHTML='';
+  document.getElementById('mentalResults').innerHTML='';
+  document.getElementById('mentalAmountHint').textContent='';
+  document.getElementById('mentalTransform').textContent='';
+  document.getElementById('mentalMethodFb').className='feedback';
+  document.getElementById('mentalAmountFb').className='feedback';
+  document.getElementById('mentalAnswerFb').className='feedback';
 }
 
 function renderMentalQuestion(){
   mentalCurrent=mentalQs[mentalIndex];
   const q=mentalCurrent;
-  document.getElementById('mentalBadge').textContent='السؤال '+ar(mentalIndex+1)+' من '+ar(mentalQs.length)+' • '+(q.kind==='int'?'صحيح':'عشري');
+  q.completedMethods=q.completedMethods||[];
+  document.getElementById('mentalBadge').textContent='السؤال '+ar(mentalIndex+1)+' من '+ar(mentalQs.length)+' • '+q.label;
   document.getElementById('mentalProblem').textContent=mentalFmt(q.a,q.scale)+' '+mentalOpSymbol(q.op)+' '+mentalFmt(q.b,q.scale)+' = ؟';
-
-  const methods=document.getElementById('mentalMethods');methods.innerHTML='';
-  shuffle([...MENTAL_METHODS]).forEach(m=>{
-    const b=document.createElement('button');b.className='mentalChoice';b.textContent=m.label;
-    b.onclick=()=>tryMentalMethod(b,m.key);methods.appendChild(b);
-  });
-
-  const amountBox=document.getElementById('mentalAmounts');amountBox.innerHTML='';
-  makeMentalAmountChoices(q).forEach(v=>{
-    const b=document.createElement('button');b.className='mentalChoice';b.textContent=mentalFmt(v,q.scale);
-    b.onclick=()=>tryMentalAmount(b,v);amountBox.appendChild(b);
-  });
-
-  const resultBox=document.getElementById('mentalResults');resultBox.innerHTML='';
-  makeMentalResultChoices(q).forEach(v=>{
-    const b=document.createElement('button');b.className='mentalChoice';b.textContent=mentalFmt(v,q.scale);
-    b.onclick=()=>tryMentalAnswer(b,v);resultBox.appendChild(b);
-  });
-
-  document.getElementById('mentalAmountHint').innerHTML='نريد جعل <b>'+mentalFmt(q.b,q.scale)+'</b> عددًا أسهل، أي <b>'+mentalFmt(q.target,q.scale)+'</b>. كم نحتاج أن نغيّره؟';
-  document.getElementById('mentalTransform').textContent='';
-  document.getElementById('mentalMethodFb').className='feedback';
-  document.getElementById('mentalAmountFb').className='feedback';
-  document.getElementById('mentalAnswerFb').className='feedback';
+  document.getElementById('mentalRoundRule').innerHTML='<b>شرط الحل:</b> '+q.rule;
   document.getElementById('mentalNext').classList.add('hidden');
-
-  const s1=document.getElementById('mentalStep1'),s2=document.getElementById('mentalStep2'),s3=document.getElementById('mentalStep3');
-  s1.classList.remove('locked','done');s2.classList.add('locked');s2.classList.remove('done');s3.classList.add('locked');s3.classList.remove('done');
-  document.getElementById('mentalStatus').textContent='الأخطاء مسموحة: جرّبي مرة أخرى حتى تصلي للطريقة الصحيحة.';
+  clearMentalStepsForMethod();
+  document.getElementById('mentalStatus').textContent=q.op==='sub'
+    ?'في الطرح: حلي المسألة بالطريقتين. يمكنك البدء بالإضافة للعددين أو الطرح من العددين.'
+    :'في الجمع: يجب أن يكون التعويض في اتجاهين متعاكسين.';
   setProgress(mentalIndex/mentalQs.length*100);
 }
 
@@ -1413,40 +1459,98 @@ function mentalWrong(btn,fb,msg){
   fb.className='feedback show bad';fb.textContent='❌ '+msg+' حاولي مرة أخرى.';
   setTimeout(()=>btn.classList.remove('wrong'),650);
 }
+function methodIsAllowed(q,key){
+  if(q.op==='add')return key==='opposite';
+  return key==='bothAdd'||key==='bothSub';
+}
+
+function prepareMentalAmountStep(){
+  const q=mentalCurrent,path=mentalActivePath;
+  const amountBox=document.getElementById('mentalAmounts');amountBox.innerHTML='';
+  makeMentalAmountChoices(q,path).forEach(v=>{
+    const b=document.createElement('button');b.className='mentalChoice';b.textContent=mentalFmt(v,q.scale);
+    b.onclick=()=>tryMentalAmount(b,v);amountBox.appendChild(b);
+  });
+  document.getElementById('mentalAmountHint').innerHTML=
+    'سنحوّل العدد <b>'+mentalFmt(path.roundOriginal,q.scale)+'</b> إلى <b>'+mentalFmt(path.roundTarget,q.scale)+'</b>. ما مقدار التعويض؟';
+}
 
 function tryMentalMethod(btn,key){
   const q=mentalCurrent,fb=document.getElementById('mentalMethodFb');
   if(document.getElementById('mentalStep1').classList.contains('done'))return;
-  if(key!==q.method){mentalWrong(btn,fb,'هذه الطريقة ستغيّر الناتج');return}
+  if(q.completedMethods.includes(key))return;
+  if(!methodIsAllowed(q,key)){
+    mentalWrong(btn,fb,q.op==='add'?'في الجمع نحافظ على المجموع بجمع في جهة وطرح في الأخرى':'في الطرح يجب أن يكون التغيير في العددين بالاتجاه نفسه');
+    return;
+  }
+  mentalActiveMethod=key;mentalActivePath=q.paths[key];
   btn.classList.add('correct');
-  fb.className='feedback show ok';fb.textContent='✅ صحيح. الآن حددي مقدار التعويض.';
+  fb.className='feedback show ok';
+  fb.textContent='✅ طريقة صحيحة. الآن اختاري مقدار التعويض الذي يحقق التصفير المطلوب.';
   document.getElementById('mentalStep1').classList.add('done');
   document.getElementById('mentalStep2').classList.remove('locked');
+  prepareMentalAmountStep();
 }
 
 function tryMentalAmount(btn,v){
-  const q=mentalCurrent,fb=document.getElementById('mentalAmountFb');
+  const q=mentalCurrent,path=mentalActivePath,fb=document.getElementById('mentalAmountFb');
   if(document.getElementById('mentalStep2').classList.contains('done'))return;
-  if(v!==q.delta){mentalWrong(btn,fb,'هذا المقدار لا يحوّل العدد إلى '+mentalFmt(q.target,q.scale));return}
+  if(v!==path.delta){
+    mentalWrong(btn,fb,'هذا المقدار لا يحوّل '+mentalFmt(path.roundOriginal,q.scale)+' إلى '+mentalFmt(path.roundTarget,q.scale));
+    return;
+  }
   btn.classList.add('correct');
-  fb.className='feedback show ok';fb.innerHTML='✅ ممتاز. '+q.actionText;
+  let action='';
+  if(q.op==='add'){
+    action=path.direction+' بالمقدار '+mentalFmt(path.delta,q.scale)+'.';
+  }else if(mentalActiveMethod==='bothAdd'){
+    action='نضيف '+mentalFmt(path.delta,q.scale)+' إلى العددين معًا.';
+  }else{
+    action='نطرح '+mentalFmt(path.delta,q.scale)+' من العددين معًا.';
+  }
+  fb.className='feedback show ok';fb.textContent='✅ ممتاز. '+action;
   document.getElementById('mentalStep2').classList.add('done');
   document.getElementById('mentalStep3').classList.remove('locked');
   document.getElementById('mentalTransform').textContent=
-    mentalFmt(q.newA,q.scale)+' '+mentalOpSymbol(q.op)+' '+mentalFmt(q.newB,q.scale)+' = ؟';
+    mentalFmt(path.newA,q.scale)+' '+mentalOpSymbol(q.op)+' '+mentalFmt(path.newB,q.scale)+' = ؟';
+
+  const resultBox=document.getElementById('mentalResults');resultBox.innerHTML='';
+  makeMentalResultChoices(q).forEach(vv=>{
+    const b=document.createElement('button');b.className='mentalChoice';b.textContent=mentalFmt(vv,q.scale);
+    b.onclick=()=>tryMentalAnswer(b,vv);resultBox.appendChild(b);
+  });
+}
+
+function completeMentalQuestion(){
+  const q=mentalCurrent;
+  mentalCorrect++;const gotCoin=rewardCorrect();
+  const fb=document.getElementById('mentalAnswerFb');
+  fb.className='feedback show ok';
+  fb.textContent='✅ أحسنتِ! الناتج '+mentalFmt(q.ans,q.scale)+'.'+(gotCoin?' 🪙 حصلتِ على قرش ذهبي!':'');
+  document.getElementById('mentalStep3').classList.add('done');
+  document.getElementById('mentalNext').classList.remove('hidden');
+  document.getElementById('mentalStatus').textContent='اكتمل هذا السؤال. انتقلي للسؤال التالي.';
 }
 
 function tryMentalAnswer(btn,v){
   const q=mentalCurrent,fb=document.getElementById('mentalAnswerFb');
   if(!document.getElementById('mentalNext').classList.contains('hidden'))return;
   if(v!==q.ans){mentalWrong(btn,fb,'الناتج غير صحيح بعد');return}
-  btn.classList.add('correct');mentalCorrect++;
-  const gotCoin=rewardCorrect();
-  fb.className='feedback show ok';
-  fb.textContent='✅ صحيح! العملية الأصلية والمبسطة لهما الناتج نفسه: '+mentalFmt(q.ans,q.scale)+'.'+(gotCoin?' 🪙 حصلتِ على قرش ذهبي!':'');
+  btn.classList.add('correct');
   document.getElementById('mentalStep3').classList.add('done');
-  document.getElementById('mentalNext').classList.remove('hidden');
-  document.getElementById('mentalStatus').textContent='أحسنتِ — انتقلي للسؤال التالي.';
+
+  if(q.op==='sub'){
+    if(!q.completedMethods.includes(mentalActiveMethod))q.completedMethods.push(mentalActiveMethod);
+    if(q.completedMethods.length<2){
+      fb.className='feedback show ok';
+      fb.textContent='✅ صحيح بالطريقة الأولى. الآن حلي نفس المسألة بالطريقة الأخرى.';
+      const doneName=mentalActiveMethod==='bothAdd'?'الإضافة للعددين':'الطرح من العددين';
+      document.getElementById('mentalStatus').textContent='أنهيتِ '+doneName+'. بقيت الطريقة الأخرى قبل الانتقال.';
+      setTimeout(()=>clearMentalStepsForMethod(),450);
+      return;
+    }
+  }
+  completeMentalQuestion();
 }
 
 function nextMentalQuestion(){
@@ -1460,7 +1564,6 @@ function nextMentalQuestion(){
   }else renderMentalQuestion();
 }
 paintMentalControls();
-
 
 /* ---------- PWA ---------- */
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}
