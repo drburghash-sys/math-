@@ -1,18 +1,1 @@
-{
-  "name": "مغامرة الرياضيات V5",
-  "short_name": "الرياضيات",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#f7f8fb",
-  "theme_color": "#ffffff",
-  "lang": "ar",
-  "dir": "rtl",
-  "icons": [
-    {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ]
-}
+{"name": "دراستنا", "short_name": "دراستنا", "start_url": "https://drburghash-sys.github.io/Exams/study/", "display": "standalone", "lang": "ar", "dir": "rtl", "icons": [{"src": "https://drburghash-sys.github.io/Exams/study/icon-192.png", "sizes": "192x192", "type": "image/png"}]}
